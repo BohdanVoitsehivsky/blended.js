@@ -318,4 +318,162 @@
 //  console.log(calAverage(1, 2, 5, 55, 2, 5, 22, 29));
 
 
- 
+//  const a = 10;
+  
+
+//  function foo() {
+
+//     const b = 20;
+//     for(let i = 0; i < 3; i++) {
+//         console.log(b);
+
+//     }
+
+
+//  }
+
+// foo();
+
+
+
+
+
+// *************- стек виклиікв
+
+
+// function fnA() {
+//     console.log("fnA");
+    
+// }
+// function fnB() {
+//     console.log("fnB");
+    
+// }
+// function fnC() {
+//     console.log("fnC");
+    
+// }
+// console.log("before fnA");
+// fnA();
+
+// console.log("after fnA");
+
+// console.log("before fnB");
+// fnB();
+
+// console.log("after fnB");
+
+// console.log("before fnC");
+// fnC();
+
+// console.log("after fnC");
+
+
+
+// ******** 
+
+// function bar() {
+//     console.log("bar");
+    
+// }
+// function baz() {
+//     console.log("baz");
+//     }
+//     function foo() {
+//         console.log("foo");
+//         bar();
+//         baz();
+//     }
+//     foo();
+
+
+
+//     function bar() {
+//         baz();
+//     console.log("bar");
+    
+// }
+// function baz() {
+//     console.log("baz");
+//     }
+//     function foo() {
+//         console.log("foo");
+//         bar();
+//         console.log("end");
+        
+        
+//     }
+//     foo();
+
+
+
+// // ********************** task
+// function logItems(items) {
+
+// for(let i = 0; i < items.length; i++) {
+//     console.log(`${i + 1} - ${items[i]}`);
+    
+// }
+
+// }
+
+
+
+// logItems(["Mango", "Poly", "Ajax"]);
+
+
+
+
+// ************** task
+
+// function printInfo(names, phones) {
+//     const nameArr = names.split(",");
+//     const phonesArr = phones.split(",");
+    
+//     for(let i = 0; i < nameArr.length; i++) {
+// console.log(nameArr[i], phonesArr[i]);
+
+//     }
+    
+// }
+
+// printInfo("lkvf,wkjefn,woefj,wlkfen", "51331133,5544554546,4545445435,4354534545435")
+
+
+
+
+// ****************task
+
+// function formatTime(totalMinutes) {
+//     const hours = Math.floor(totalMinutes / 60);
+//     const minut =  totalMinutes % 60;
+//     const doubleHours = String(hours).padStart(2, "0") ;
+//     const doubleMinutes = String(minut).padStart(2, "0")
+//    console.log(`${doubleHours}:${doubleMinutes}`);
+   
+    
+// }
+
+// console.log(formatTime(500));
+
+
+
+
+// ********** task
+
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// function foo(array, count) {
+// const res = [];
+// for(let i = 0; i < array.length; i += count) {
+// const a = array.slice(i, i + count);
+
+// res.push(a)
+
+    
+// }
+    
+// return res
+// }
+// console.log(
+//  foo(numbers, 4));
