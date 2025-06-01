@@ -477,3 +477,312 @@
 // }
 // console.log(
 //  foo(numbers, 4));
+
+
+
+
+// ** обєкти
+
+// const playlist = {
+//     name: "My playlist",
+//     rating: 5,
+//     track: ["track1", "track2", "track3"],
+//     isFavorite: true,
+// };
+
+// playlist.name = "New playlist"
+// playlist.name = "lalala"
+// playlist.lala = "suoer"
+// console.log(playlist.lala);
+
+
+// const obj = {
+//     userName: "Alice",
+//     skils: {
+//         html: true,
+//         css: true,
+//         js: false,
+//     }
+// }
+// obj.skils.js = true;
+// console.log(obj.skils.js);
+
+
+
+
+// const arr = [1, 2, 3];
+// arr.lalala = "tototo"
+// console.log(arr);
+
+
+// function foo() {
+//     console.log("lala");
+    
+// }
+// // foo.lalal = "totto";
+
+
+// const a = {x: 1, y: 2};
+// const b = a;
+
+// a.x = 100;
+// console.log("a", a);
+// console.log("b", b);
+
+// // console.log(a === b);
+
+
+
+
+//  ************ Короткі властивості 
+
+// const userName = "Alice";
+// const age = 25;
+
+// const obj = {
+//     userName,
+//     age,
+// }
+// console.log(obj);
+
+
+// function foo(name, age) {
+//     return {
+//         name,
+//         age,
+//     }
+// }
+// console.log(foo("Petya", 30));
+
+
+// const inputName = "color";
+// const obj = {
+//     [inputName]: "red"
+// }
+// console.log(obj);
+
+
+//  ************* перебір обєктів
+
+// const feedback = {
+//     good: 3,
+//     neutral: 5,
+//     bad: 10,
+// }
+// let total = 0;
+// // for(const key in feedback) {
+//     console.log(feedback[key]);
+//     total += feedback[key]
+// }
+// console.log(total);
+
+// const keys = Object.keys(feedback);
+// for(const key of keys) {
+//     console.log(feedback[key]);
+//     total += feedback[key];
+    
+// };
+// console.log(total);
+
+
+// const values = Object.values(feedback);
+// console.log(values);
+// for(const item of values) {
+//     total += item;
+// }
+
+// console.log(total);
+
+
+
+
+// ********** 
+
+// const animal = {
+//     legd: 4
+// }
+// const dog = Object.create(animal);
+// dog.name = "patron"
+// // for(const key in dog) {
+// //    if(dog.hasOwnProperty(key)) {
+// //     console.log(dog[key]);
+    
+// //    }
+    
+// // }
+// const keys = Object.keys(dog);
+// for(const key of keys) {
+//     console.log(dog[key]);
+    
+// }
+
+
+// **********
+
+// const user = {
+//     name: "Alice",
+//     age: 20,
+//     hobby: "html",
+//     premium: true,
+// };
+
+// const user1 = {
+//     name: "Petya",
+//     age: 25,
+//     hobby: "css",
+//     premium: true,
+// };
+// // user.mood = "happy";
+// // user.hobby = "skydiving";
+// // user.premium = false;
+// // const keys = Object.keys(user)
+// // for(const key of keys) {
+// //     console.log(`${key}: ${user[key]}`);
+    
+// // }
+// // console.log(user);
+// function foo(obj) {
+//     obj.mood = "happy";
+// obj.hobby = "skydiving";
+// obj.premium = false;
+// const keys = Object.keys(obj);
+// for(const key of keys) {
+//     console.log(`${key}: ${obj[key]}`);
+//     return "kjsfdcm"
+    
+// }
+
+// }
+// console.log(foo(user))
+// foo(user1)
+// console.log(foo(user1));
+
+
+
+// const salaries = {
+//     Alice: 160,
+//     Yura: 130,
+//     Petya: 100,
+// }
+
+// function summa(obj) {
+//     let sum = 0;
+//     const values = Object.values(obj);
+//    for(const value of values) {
+//     sum += value;
+//    }
+//    return sum;
+    
+
+// }
+// console.log(summa(salaries));
+
+
+// function getProductPrice(productName) {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+//   ];
+
+//   for (const product of products) {
+//    console.log(product.price);
+   
+//   }
+  
+// }
+// getProductPrice("Radar")
+
+// ************ 
+
+// const books = [
+//   { title: "The Last Kingdom", author: "Bernard Cornwell", rating: 8.2 },
+//   { title: "Beside Still Waters", author: "Robert Sheckley", rating: 9 },
+//   { title: "The Dream of a Ridiculous Man", author: "Fyodor Dostoevsky", rating: 6.8 }
+// ];
+
+// // const author = [];
+// // for(const book of books) {
+// //     author.push(book.author)
+// // }
+// // console.log(author);
+
+// let totalRating = 0;
+// for(const book of books) {
+//     totalRating += book.rating;
+//     console.log(totalRating);
+    
+// }
+// const averageRating = totalRating / books.length
+// console.log(averageRating);
+
+
+// function getAllPropValues(propName) {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+//   ];
+//   for(const product of products) {
+//     console.log(product);
+//   }
+  
+// }
+// getAllPropValues()
+
+
+// function getAllPropValues(propName) {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+//   ];
+
+//   const res = [];
+//   for(const product of products) {
+//    if(product.hasOwnProperty(propName) ) {
+//      res.push(product[propName])
+//      console.log(product.price);
+     
+//    }
+//   }
+//   return res
+// }
+
+
+// console.log(getAllPropValues("quantity"));
+
+
+// function calculateTotalPrice(productName) {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+//   ];
+ 
+//   for(const product of products) {
+//     if(product.name === productName) {
+//       return product.price * product.quantity;
+//     } 
+      
+    
+    
+//   }
+//   return `Product ${productName} not found!`
+// }
+// console.log(calculateTotalPrice("Salo"));
+
+// const first = { propA: 5, propB: 10, propC: 50 };
+// const second = { propC: 15, propD: 20 };
+
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15, propD: 20 }
+
+// const fourth = { ...second, ...first };
+// console.log(fourth); // { propA: 5, propB: 10, propC: 50, propD: 20 }
+
+
