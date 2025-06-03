@@ -786,3 +786,316 @@
 // console.log(fourth); // { propA: 5, propB: 10, propC: 50, propD: 20 }
 
 
+
+
+
+// *************** lesson 29.05
+
+// const friends = [
+//     {name: "Ross", online: false},
+//     {name: "Joey", online: true},
+//     {name: "Chasndler", online: false},
+//     {name: "Phoebe", online: true},
+//     {name: "Monica", online: true},
+//     {name: "Rachel", online: false},
+
+// ];
+
+
+//  Пошук друга за іменем
+
+// function findByName(arr, userName) {
+// // ross === joey
+//     for(const item of arr) {
+//      if(item.name.toLowerCase === userName.toLowerCase) {
+//         return item
+//      }
+     
+     
+    
+        
+//     }
+//     return "Not found"
+// }
+
+
+// console.log(findByName(friends, "Joe"))
+
+
+
+// отримуємо імя всіх друзів
+
+
+// function getAllName(arr) {
+//     let names = [];
+//     for(const item of arr) {
+//        names.push(item.name); 
+//     }
+// return names;
+// }
+//  console.log(getAllName(friends));
+ 
+
+
+
+//  отриммати імена тільки тих друзів, які зараз онлайн
+
+
+// function getOnline(arr) {
+//     const online = [];
+//     for(const item of arr) {
+//        if(item.online) {
+//         online.push(item);
+//        }
+        
+//     }
+//     return online;
+// }
+// console.log(getOnline(friends));
+
+
+
+
+
+
+// const stones = [
+//     {name: "Смарагд", price: 1300, quantity: 4},
+//     {name: "Діамант", price: 2700, quantity: 3},
+//     {name: "Сапфір", price: 400, quantity: 7},
+//     {name: "Сапфір", price: 400, quantity: 7},
+//     {name: "Щебінь", price: 200, quantity: 2},
+// ];
+
+
+// function calcTotalPrice(stones, stoneName) {
+//     let sum = 0;
+//     for(const item of stones) {
+//         if(item.name === stoneName) {
+//          sum += item.quantity * item.price;
+            
+//         }
+//     }
+//     return sum;
+// }
+// console.log(calcTotalPrice(stones, "Сапфір"));
+
+
+
+
+// ********** методи обєкту
+
+
+// ...rest ...spred оператори  1,48 відео 2го уроку 
+
+
+// const obj = { x:1};
+
+// const obj1 = obj;
+
+// obj.x = 100;
+// console.log(obj1);
+
+
+
+// function foo(a, b, ...rest) {
+
+// console.log(rest);
+
+// }
+// foo(1, 2, 3);
+// foo(10, 20, 3, 4, 5)
+
+
+
+// **** spread оператор робить протилежну дію до rest
+// const numbers = [
+//     1000,
+//     ...[1, 1, 3],
+//     2000,
+//     ...[4, 5, 6],
+//     3000
+// ]
+// console.log(numbers);
+
+// const temps = [18, 14, 12, 19, 29, 35, 24]
+// console.log(Math.min(...temps));
+// console.log(Math.max(...temps));
+
+
+
+
+//  стврення масиву і тип за посиланням
+
+
+// const a = [{x: 1}, {y: 2}];
+// const b = [...a];
+
+// a[0].x = 100
+// console.log("a", a);
+// console.log("b", b);
+
+
+//  поєднуємо кілька масивів в один через spread
+
+// const lastWeekTemps = [1, 2, 3];
+// const currentWeek = [4, 5, 6];
+// const nextWeekTemps = [7, 8, 9]
+
+
+// const allTemps = [...lastWeekTemps, ...currentWeek, ...nextWeekTemps];
+// console.log(allTemps);
+
+
+
+
+
+//  створення обЄкта
+
+// const objA = {x: 1, y: 2 };
+// const objB = {x: 0, q: 3 };
+// const objC = {
+//     ...objA,
+//     x: 10,
+//     ...objB,
+//     y: 20,
+// }
+
+
+// console.log(objC);
+
+/*
+ * Типів транзакцій всього два.
+ * Можна покласти чи зняти гроші з рахунку.
+ */
+const Transaction = {
+  DEPOSIT: "deposit",
+  WITHDRAW: "withdraw",
+};
+
+
+
+
+
+/*
+ * Кожна транзакція це об'єкт із властивостями: id, type та amount
+ */
+
+const account = {
+  // Поточний баланс рахунку
+  balance: 0,
+
+  // Історія транзакцій
+  transactions: [],
+
+
+
+  /*
+   * Метод створює та повертає об'єкт транзакції.
+   * Приймає суму та тип транзакції.
+   */
+  createTransaction(amount, type) {
+    const obj = { id: amount, amount, type };
+    return obj;
+  },
+
+
+
+
+
+  /*
+   * Метод, що відповідає за додавання суми до балансу.
+   * Приймає суму транзакції.
+   * Викликає createTransaction для створення об'єкта транзакції
+   * після чого додає його до історії транзакцій
+   */
+  deposit(amount) {
+    this.balance += amount;
+    const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+    this.transactions.push(transaction);
+  },
+
+
+
+
+
+  /*
+   * Метод, що відповідає за зняття суми з балансу.
+   * Приймає суму транзакції.
+   * Викликає createTransaction для створення об'єкта транзакції
+   * після чого додає його до історії транзакцій.
+   *
+   * Якщо amount більше ніж поточний баланс, виводь повідомлення
+   * про те, що зняття такої суми не можливе, недостатньо коштів.
+   */
+  withdraw(amount) {
+    if(this.balance < amount) {
+      console.log("Недостатньок коштів");
+      return;
+    }
+
+    this.balance -= amount;
+    const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+    this.transactions.push(transaction);
+  },
+
+
+
+
+
+  /*
+   * Метод повертає поточний баланс
+   */
+  getBalance() {
+    return this.balance;
+  },
+
+
+
+
+
+  /*
+   * Метод шукає та повертає об'єкт транзакції по id
+   */
+  getTransactionDetails(id) {
+    // const this = account
+    for(const item of this.transactions) {
+      if(item.id === id) {
+        return item;
+      }
+    }
+    return "Not found";
+  },
+
+
+
+
+
+  /*
+   * Метод повертає кількість коштів
+   * певного типу транзакції з усієї історії транзакцій
+   */
+  getTransactionTotal(type) {
+    let sum = 0;
+    for(const item of this.transactions) {
+      if(item.type === type) {
+        sum += item.amount;
+      }
+    }
+
+    return sum;
+  },
+};
+
+  
+account.deposit(200);
+account.deposit(400);
+
+account.withdraw(1000);
+
+console.log(account.getTransactionDetails(200))
+
+console.log(account.getBalance());
+// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+
+// console.log(account);
+
