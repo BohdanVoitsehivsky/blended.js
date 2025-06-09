@@ -963,139 +963,695 @@
 
 // console.log(objC);
 
-/*
- * Типів транзакцій всього два.
- * Можна покласти чи зняти гроші з рахунку.
- */
-const Transaction = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdraw",
-};
+
+
+
+
+// **************дуже гарний приклад, розібрати
+
+// /*
+//  * Типів транзакцій всього два.
+//  * Можна покласти чи зняти гроші з рахунку.
+//  */
+// const Transaction = {
+//   DEPOSIT: "deposit",
+//   WITHDRAW: "withdraw",
+// };
 
 
 
 
 
-/*
- * Кожна транзакція це об'єкт із властивостями: id, type та amount
- */
+// /*
+//  * Кожна транзакція це об'єкт із властивостями: id, type та amount
+//  */
 
-const account = {
-  // Поточний баланс рахунку
-  balance: 0,
+// const account = {
+//   // Поточний баланс рахунку
+//   balance: 0,
 
-  // Історія транзакцій
-  transactions: [],
-
-
-
-  /*
-   * Метод створює та повертає об'єкт транзакції.
-   * Приймає суму та тип транзакції.
-   */
-  createTransaction(amount, type) {
-    const obj = { id: amount, amount, type };
-    return obj;
-  },
+//   // Історія транзакцій
+//   transactions: [],
 
 
 
-
-
-  /*
-   * Метод, що відповідає за додавання суми до балансу.
-   * Приймає суму транзакції.
-   * Викликає createTransaction для створення об'єкта транзакції
-   * після чого додає його до історії транзакцій
-   */
-  deposit(amount) {
-    this.balance += amount;
-    const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
-    this.transactions.push(transaction);
-  },
+//   /*
+//    * Метод створює та повертає об'єкт транзакції.
+//    * Приймає суму та тип транзакції.
+//    */
+//   createTransaction(amount, type) {
+//     const obj = { id: amount, amount, type };
+//     return obj;
+//   },
 
 
 
 
 
-  /*
-   * Метод, що відповідає за зняття суми з балансу.
-   * Приймає суму транзакції.
-   * Викликає createTransaction для створення об'єкта транзакції
-   * після чого додає його до історії транзакцій.
-   *
-   * Якщо amount більше ніж поточний баланс, виводь повідомлення
-   * про те, що зняття такої суми не можливе, недостатньо коштів.
-   */
-  withdraw(amount) {
-    if(this.balance < amount) {
-      console.log("Недостатньок коштів");
-      return;
-    }
-
-    this.balance -= amount;
-    const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
-    this.transactions.push(transaction);
-  },
+//   /*
+//    * Метод, що відповідає за додавання суми до балансу.
+//    * Приймає суму транзакції.
+//    * Викликає createTransaction для створення об'єкта транзакції
+//    * після чого додає його до історії транзакцій
+//    */
+//   deposit(amount) {
+//     this.balance += amount;
+//     const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+//     this.transactions.push(transaction);
+//   },
 
 
 
 
 
-  /*
-   * Метод повертає поточний баланс
-   */
-  getBalance() {
-    return this.balance;
-  },
+//   /*
+//    * Метод, що відповідає за зняття суми з балансу.
+//    * Приймає суму транзакції.
+//    * Викликає createTransaction для створення об'єкта транзакції
+//    * після чого додає його до історії транзакцій.
+//    *
+//    * Якщо amount більше ніж поточний баланс, виводь повідомлення
+//    * про те, що зняття такої суми не можливе, недостатньо коштів.
+//    */
+//   withdraw(amount) {
+//     if(this.balance < amount) {
+//       console.log("Недостатньок коштів");
+//       return;
+//     }
+
+//     this.balance -= amount;
+//     const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+//     this.transactions.push(transaction);
+//   },
 
 
 
 
 
-  /*
-   * Метод шукає та повертає об'єкт транзакції по id
-   */
-  getTransactionDetails(id) {
-    // const this = account
-    for(const item of this.transactions) {
-      if(item.id === id) {
-        return item;
-      }
-    }
-    return "Not found";
-  },
+//   /*
+//    * Метод повертає поточний баланс
+//    */
+//   getBalance() {
+//     return this.balance;
+//   },
 
 
 
 
 
-  /*
-   * Метод повертає кількість коштів
-   * певного типу транзакції з усієї історії транзакцій
-   */
-  getTransactionTotal(type) {
-    let sum = 0;
-    for(const item of this.transactions) {
-      if(item.type === type) {
-        sum += item.amount;
-      }
-    }
+//   /*
+//    * Метод шукає та повертає об'єкт транзакції по id
+//    */
+//   getTransactionDetails(id) {
+//     // const this = account
+//     for(const item of this.transactions) {
+//       if(item.id === id) {
+//         return item;
+//       }
+//     }
+//     return "Not found";
+//   },
 
-    return sum;
-  },
-};
+
+
+
+
+//   /*
+//    * Метод повертає кількість коштів
+//    * певного типу транзакції з усієї історії транзакцій
+//    */
+//   getTransactionTotal(type) {
+//     let sum = 0;
+//     for(const item of this.transactions) {
+//       if(item.type === type) {
+//         sum += item.amount;
+//       }
+//     }
+
+//     return sum;
+//   },
+// };
 
   
-account.deposit(200);
-account.deposit(400);
+// account.deposit(200);
+// account.deposit(400);
 
-account.withdraw(1000);
+// account.withdraw(1000);
 
-console.log(account.getTransactionDetails(200))
+// console.log(account.getTransactionDetails(200))
 
-console.log(account.getBalance());
-// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+// console.log(account.getBalance());
+// // console.log(account.getTransactionTotal(Transaction.WITHDRAW));
 
-// console.log(account);
+// // console.log(account);
 
+
+
+
+
+
+
+
+
+
+// const students = [
+//   { name: "Mango", score: 83 },
+//   { name: "Poly", score: 59 },
+//   { name: "Ajax", score: 37 },
+//   { name: "Kiwi", score: 94 },
+//   { name: "Houston", score: 64 },
+// ];
+
+// const names = students.map(student => student.score + student.name);
+// console.log(names); // ["Mango", "Poly", "Ajax", "Kiwi", "Houston"]
+
+
+// function foo(a, b)  {
+//     return a + b;
+// }
+// console.log(foo);
+
+// const a = foo
+// console.log(a(2, 3));
+
+//  callback function
+
+// function fnA(num) {
+//     console.log("fnA", num * 2);
+    
+// }
+
+// function foo(a, b, callback){
+//     console.log(callback);
+//     callback(2);
+//    return a + b; 
+   
+   
+   
+// }
+
+// console.log(foo(1, 2, fnA));
+
+
+
+
+//  
+
+// function calc1(a, b, callback) {
+//     console.log("hello");
+//     console.log("lalal");
+//     const result = callback(a, b);
+//     console.log(result);
+    
+    
+    
+// }
+// // function calc2(a, b) {
+// //     console.log("hello");
+// //     console.log("lalal");
+// //     const result = a - b;
+// //     console.log(result);
+    
+    
+    
+// // }
+// calc1(10, 2, function(x, y) {
+//     return x + y;
+// })
+
+// calc1(5, 3, function(x, y) {
+//     return x - y;
+// })
+
+
+
+// function each(array, callback) {
+// const newArr = [];
+// for(const num of array) {
+//    newArr.push(callback(num))
+    
+// }
+// return newArr
+// }
+// console.log(each([64, 49, 36, 87, 16], function(value) {
+//     return value * 2;
+// }));
+// console.log(each([64, 49, 36, 87, 16], function(value) {
+//     return value - 10;
+// }));
+
+// console.log(each([64, 49, 36, 87, 16], function(value) {
+//     return Math.sqrt(value);
+// }));
+
+
+
+// Стрілочні функції
+
+// function add(a, b) {
+//     console.log(a, b);
+    
+// }
+
+
+// const addArrow = (a, b) => {
+//     return a + b;
+// }
+// add(1, 2)
+// console.log(addArrow(10, 20));
+
+
+
+// const calc = (a, b, callback) => {
+//     const result = callback(a, b);
+//     console.log(result);
+    
+// }
+// calc(2, 5, (x, y ) => {
+//     return x + y;
+// })
+
+
+// calc(19, 3, (x, y) => 
+//    x - y 
+// );
+
+
+
+//  метод forEach
+
+
+// const numbers = [5, 15, 45, 50];
+// // numbers.forEach(function(hk) {
+// // console.log(hk);
+
+// // })
+
+// let sum = 0;
+// numbers.forEach((num) => {
+//     sum += num;
+// })
+// console.log(sum);
+
+
+// метод map();
+
+
+// const allCars = [
+//     {make: "Honda", model: "CR-V", amount: 14, price: 24045},
+//     {make: "Honda", model: "Accord", amount: 10, price: 20045},
+//     {make: "Toyota", model: "LC", amount: 4, price: 28045},
+//     {make: "Toyota", model: "Cprolla", amount: 25, price: 14045},
+//     {make: "MB", model: "G", amount: 1, price: 244045},
+//     {make: "Toyota", model: "CR-o", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-b", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-q", amount: 14, price: 24045},
+// ]
+
+// // const getModels = (cars) => {
+// //     const arr = [];
+// //     cars.forEach(item => {
+// //         arr.push(item.model);
+        
+// //     })
+// //     return arr;
+// // }
+// // console.log(
+// const getModels = (cars) => {
+//     const res = cars.map(item => 
+//       item.model
+        
+//     );
+//     console.log(res);
+    
+
+// }
+// getModels(allCars)
+
+
+
+// *****************************
+
+
+// const makeCarsWithDiscount = (cars, discount) => {
+//     return cars.map(item => {
+//         return {
+//             ...item,
+//             price: item.price * (1 - discount),
+//         }
+//     })
+
+// }
+// console.table(makeCarsWithDiscount(allCars, 0.2));
+
+
+
+
+
+
+// *********************
+
+// const players = [
+//     {id: "Player-1", name: "Mango", timePleyed: 310, points: 154, online: true},
+//     {id: "Player-2", name: "Ma", timePleyed: 910, points: 540, online: true},
+//     {id: "Player-3", name: "ngo", timePleyed: 210, points: 548, online: true},
+//     {id: "Player-4", name: "Mago", timePleyed: 30, points: 543, online: true},
+//     {id: "Player-5", name: "Mno", timePleyed: 350, points: 541, online: true},
+// ]
+
+// const playerId = "Player-3";
+// const update = (arr, id) => {
+// return arr.map((item) => {
+//     if(item.id === id) {
+//         return {...item,
+//             timePleyed: item.timePleyed + 100
+//         }
+//     }
+//     return item;
+// })
+// }
+// console.table(update(players, playerId));
+
+
+
+
+// const getUsersWithEyeColor = (users, color) => {return users.filter(user => user.eyeColor === color)};
+
+// console.log(
+//  getUsersWithEyeColor(
+// [
+//   {
+//     name: "Moore Hensley",
+//     email: "moorehensley@indexia.com",
+//     eyeColor: "blue",
+//     friends: ["Sharron Pace"],
+//     isActive: false,
+//     balance: 2811,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     email: "sharlenebush@tubesys.com",
+//     eyeColor: "blue",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     isActive: true,
+//     balance: 3821,
+//     gender: "female"
+//   },
+//   {
+//     name: "Ross Vazquez",
+//     email: "rossvazquez@xinware.com",
+//     eyeColor: "green",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     isActive: false,
+//     balance: 3793,
+//     gender: "male"
+//   },
+//   {
+//     name: "Elma Head",
+//     email: "elmahead@omatom.com",
+//     eyeColor: "green",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     isActive: true,
+//     balance: 2278,
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     email: "careybarr@nurali.com",
+//     eyeColor: "blue",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     isActive: true,
+//     balance: 3951,
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     email: "blackburndotson@furnigeer.com",
+//     eyeColor: "brown",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     isActive: false,
+//     balance: 1498,
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     email: "shereeanthony@kog.com",
+//     eyeColor: "brown",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     isActive: true,
+//     balance: 2764,
+//     gender: "female"
+//   }
+// ] , "brown")
+// )
+
+
+
+// ********** lesson 08.06
+
+
+// const numbers = [5, 10, 15, 20, 25];
+// const liltNum = numbers.filter((number) =>{
+//     return number < 20;
+    
+// })
+// console.log(liltNum);
+
+
+
+
+// **************
+
+
+
+// const allCars = [
+//     {make: "Honda", model: "CR-V", amount: 14, price: 24045},
+//     {make: "Honda", model: "Accord", amount: 10, price: 20045},
+//     {make: "Toyota", model: "LC", amount: 4, price: 28045},
+//     {make: "Toyota", model: "Cprolla", amount: 25, price: 14045},
+//     {make: "MB", model: "G", amount: 1, price: 244045},
+//     {make: "Toyota", model: "CR-o", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-b", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-q", amount: 14, price: 24045},
+// ];
+
+// // const filterByPrice = (cars, threshold) => {
+// // return cars.filter((item) => { return item.price < threshold && item.make === "Toyota"} )
+// // }
+
+// // console.table(filterByPrice( allCars, 25000))
+
+
+
+
+// const getCarWithMake = (cars, make) => {
+// return cars.filter((item) => {
+//     return item.make === make;
+// })
+// }
+
+// console.table(getCarWithMake(allCars, "Toyota"));
+
+
+
+//  ********** метод find
+
+// const numbers = [5, 10, 15, 20, 25];
+// const num = numbers.find((item) => { 
+//     return item > 100;
+    
+    
+// })
+// console.log(num);
+
+
+
+// const allCars = [
+//     {make: "Honda", model: "CR-V", amount: 14, price: 24045},
+//     {make: "Honda", model: "Accord", amount: 10, price: 20045},
+//     {make: "Toyota", model: "LC", amount: 4, price: 28045},
+//     {make: "Toyota", model: "Cprolla", amount: 25, price: 14045},
+//     {make: "MB", model: "G", amount: 1, price: 244045},
+//     {make: "Toyota", model: "CR-o", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-b", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-q", amount: 14, price: 24045},
+// ];
+
+
+// шукаємо авто за моделлю
+
+
+// const getByModel = (arr, model) => {
+//     return arr.find(item => item.model === model)
+// }
+// console.log(getByModel(allCars, "Cprolla"));
+
+
+
+//  пощук авто за мaркою методом find
+
+
+
+// const getByMake = (array, make) => {
+//     return array.find(item => item.make === make)
+// }
+
+// console.log(getByMake(allCars, "Toyota"));
+
+
+// метод evere some
+
+
+//  const players = [
+//     {id: "Player-1", name: "Mango", timePleyed: 310, points: 154, online: true},
+//     {id: "Player-2", name: "Ma", timePleyed: 910, points: 540, online: true},
+//     {id: "Player-3", name: "ngo", timePleyed: 210, points: 548, online: true},
+//     {id: "Player-4", name: "Mago", timePleyed: 130, points: 543, online: false},
+//     {id: "Player-5", name: "Mno", timePleyed: 350, points: 541, online: true},
+// ]
+
+
+// // const isAllOnline = players.every((item) => {return item.timePleyed > 100});
+// // console.log(isAllOnline);
+
+
+// // метод some
+
+
+
+// const isSomeOnline = players.some((item) => item.name === "Mango")
+// console.log(isSomeOnline);
+
+//  відео 2й урок 1,18 
+
+
+// метод reduce
+
+
+// const numbers = [5, 10, 15, 20, 25];
+// const total = numbers.reduce((acc, item) => {
+//     return acc + item;
+    
+    
+
+// }, 3)
+// console.log(total);
+
+
+
+// **** задача
+
+// const salary = {
+//     mango: 100,
+//     poly: 50,
+//     ajax: 150,
+// };
+
+// const values = Object.values(salary);
+// const total = values.reduce((acc, item) => {
+//     return acc + item;
+// })
+// console.log(total);
+
+
+// ************ task 2
+
+//  const players = [
+//     {id: "Player-1", name: "Mango", timePleyed: 310, points: 154, online: true},
+//     {id: "Player-2", name: "Ma", timePleyed: 910, points: 540, online: true},
+//     {id: "Player-3", name: "ngo", timePleyed: 210, points: 548, online: true},
+//     {id: "Player-4", name: "Mago", timePleyed: 130, points: 543, online: false},
+//     {id: "Player-5", name: "Mno", timePleyed: 350, points: 541, online: true},
+// ];
+
+
+// const total = players.reduce((acc, item) => {
+//     return acc + item.timePleyed;
+
+
+
+    
+// }, 0)
+// console.log(total);
+
+
+
+// const cart = [
+//     {label: "Aples", price: 100, quantity: 2},
+//     {label: "Grapes", price: 50, quantity: 9},
+//     {label: "lemions", price: 10, quantity: 4},
+// ]
+//  const total = cart.reduce(((acc, item) => acc + item.price * item.quantity), 0)
+//  console.log(total);
+ 
+
+
+
+// **** метод toSorted()
+
+
+// const numbers = [1, 2, 3, 4, 9];
+// const res = numbers.toSorted()
+// console.log(res);
+
+
+// const arr = ["a", "B", "A", "b"];
+// const res = arr.toSorted((a, b) => a.localeCompare(b));
+// console.log(res);
+
+
+// const numbers = [8, 1, 12, 2, 6];
+// const res = numbers.toSorted((a, b) => a - b)
+// console.log(res);
+
+
+
+
+//  const players = [
+//     {id: "Player-1", name: "Mango", timePleyed: 310, points: 154, online: true},
+//     {id: "Player-2", name: "Ma", timePleyed: 910, points: 540, online: true},
+//     {id: "Player-3", name: "ngo", timePleyed: 210, points: 548, online: true},
+//     {id: "Player-4", name: "Mago", timePleyed: 130, points: 543, online: false},
+//     {id: "Player-5", name: "Mno", timePleyed: 350, points: 541, online: true},
+// ];
+
+
+// //  за ігровиим часом
+
+// const sorted = players.toSorted((a, b) => b.timePleyed - a.timePleyed);
+// console.table(sorted);
+
+
+
+// ******* ланцюжки методів
+
+
+// const numbers = [1, 5, 3, 4, 2];
+
+// // const arr1 = numbers.filter((num) => num > 2);
+// // const arr2 = arr1.map((num) => num * 3)
+// // const arr3 = arr2.toSorted((a, b) => a - b)
+
+// // console.log(arr3);
+
+// const res = numbers
+
+// .filter((num) => num > 2)
+// .map((num) => num * 3)
+// .toSorted((a, b) => a -b );
+// console.log(res);
+
+
+//  const allCars = [
+//     {make: "Honda", model: "CR-V", amount: 14, price: 24045},
+//     {make: "Honda", model: "Accord", amount: 10, price: 20045},
+//     {make: "Toyota", model: "LC", amount: 4, price: 28045},
+//     {make: "Toyota", model: "Cprolla", amount: 25, price: 14045},
+//     {make: "MB", model: "G", amount: 1, price: 244045},
+//     {make: "Toyota", model: "CR-o", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-b", amount: 14, price: 24045},
+//     {make: "Toyota", model: "CR-q", amount: 14, price: 24045},
+// ];
+
+// const getModel
