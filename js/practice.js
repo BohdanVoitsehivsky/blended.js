@@ -1655,3 +1655,493 @@
 // ];
 
 // const getModel
+
+
+
+
+// lesson 10.06.25 
+
+
+// Контекст виконання функції
+// "use strict"
+// function foo() {
+//     console.log(this);
+    
+    
+// }
+
+
+// foo();
+
+// * контекст методу об*єкта
+
+// const user = {
+//     userName: "Alice",
+//     // showThis() {
+//     //     console.log(this);
+        
+//     // }
+//     showThis: () => {
+//         console.log(this);
+        
+//     }
+// }
+// user.showThis();
+
+
+//  контекст методу об*єкту, але оголошена як зовнішня ф-ція
+
+// function showThis() {
+//    console.log("this", this);
+    
+// }
+// const obj = {
+//     userName: "Alice"
+// }
+// obj.showUserThis = showThis;
+// // console.log(obj.showUserThis);
+// obj.showUserThis()
+
+
+
+// виклик без контексту але оголошений як метод об*єкту 
+
+
+// const user = {
+//     userName: "Petya",
+//     showThis() {
+//         console.log("this", this);
+//         console.log("userName", this.userName);
+        
+        
+//     }
+
+    
+// }
+// // user.showThis()
+
+// const foo = user.showThis;
+// // console.log(foo);
+// foo();
+
+
+// контекст у коллбек-функціях
+
+
+// const user = {
+//   userName: "Petya",
+//   showThis() {
+//     console.log("this", this);
+    
+//   }  
+// }
+// function foo(callback) {
+//     console.log(callback);
+//     callback()
+    
+// }
+// foo(user.showThis)
+
+// function foo() {
+//     console.log(this.lalala);
+    
+// }
+// foo()
+
+
+// const chopShop = {
+//     stones: [
+//         {name: "Emerald", price: 1300, quantiy: 4},
+//         {name: "Diamond", price: 2700, quantiy: 3},
+//         {name: "Sapphire", price: 1400, quantiy: 7},
+//         {name: "Ruby", price: 800, quantiy: 2},
+
+//     ],
+//     calcTotalPrice(stonesName) {
+//         const stone = this.stones.find((item) => item.name === stonesName);
+//         if(!stone) { 
+//             return `${stonesName} not found`;
+
+//         }
+//         return stone.price * stone.quantiy;
+//         console.log(stone);
+        
+
+//     }
+// }
+// console.log(chopShop.calcTotalPrice("Sapphire"));
+
+
+
+
+//  Контекст виконання функції
+
+// ** метод call
+// ** метод apply
+// ** метод bind
+
+// function showThis(a, b, arr) {
+//     console.log(a, b, arr);
+    
+//     console.log("this", this);
+    
+// }
+// const obj = {
+//     a: 5,
+//     b: 10
+// }
+// // showThis.call(obj)
+// showThis.apply(obj, ["Petya", 3, [1, 2, 3]])
+
+// function changeColor(newColor) {
+//     console.log("this", this);
+//     this.color = newColor;
+    
+// }
+
+// const hat = {
+//    color: "black" 
+// }
+
+// const sweater = {
+//     color: "green"
+// }
+
+// changeColor.call(hat, "red");
+// console.log(hat);
+// changeColor.apply(sweater, ["blue", 5])
+// console.log(sweater);
+
+
+// const changeHatColor = changeColor.bind(hat);
+
+// changeHatColor("yellow");
+// console.log(hat);
+
+
+
+
+
+
+//  задачка для bind()
+
+
+// const counter = {
+//     value: 0,
+//     increment(num) {
+//         console.log("increment", this);
+//         this.value += 10;
+//         },
+//         decrement(num) {
+//             console.log("decrement", this);
+//             this.value -+ 10;
+            
+//         }
+// }
+
+// function foo(number, callback) {
+//     // console.log(callback);
+    
+//     callback(number);
+
+// }
+// foo(10, counter.increment.bind(counter))
+// console.log(counter);
+// foo(3, counter.decrement.bind(counter))
+// console.log(counter);
+
+
+
+//  прототипи об*єктів
+
+// const animal = {
+//     legs: 4,
+
+// }
+// const dog = Object.create(animal);
+// dog.name = "Patron";
+// console.log(dog);
+// console.log(dog.hasOwnProperty("name"));
+
+// for(const key in dog) {
+//     if(dog.hasOwnProperty(key)) {
+//         console.log(Object.keys(dog));
+        
+//     }
+    
+    
+    
+// }
+
+
+
+// const objC = { c: "objC"};
+// const objB = Object.create(objC);
+// objB.b = "objB";
+// const objA = Object.create(objB);
+// objA.a = "objA";
+
+// console.log(objA);
+// console.log(objA.c);
+// console.log(objA.hasOwnProperty("c"));
+
+
+
+
+// const cruiseControl = {
+//     speed: 0,
+//     brand: "Audi",
+//     accelerate() {
+//         this.speed += 10;
+//         console.log(`${this.brand} has speed ${this.speed}`);
+        
+//     },
+//     decrease() {
+//         if(this.speed <= 0) {
+//             console.log("Auto stop");
+//             return;
+//         }
+//         this.speed -= 10;
+//         console.log(` Stoped`);
+        
+//     }
+// }
+// cruiseControl.accelerate();
+// cruiseControl.accelerate();
+// cruiseControl.decrease();
+// cruiseControl.decrease()
+// cruiseControl.decrease()
+
+
+// console.log(cruiseControl);
+
+// const Speed = 60;
+
+// const bmw = {
+//     brand: "Bmw",
+//     speed: 40
+// }
+
+// const audi = {
+//     brand: "Audi",
+//     speed: 90
+// }
+// function speedSensor(maxSpeed) {
+//     if(this.speed <= maxSpeed) {
+//         return `Авто ${this.brand} рухається безпечно`
+//     }
+//     return ` ${this.brand} перевищує швидкість`
+// }
+// console.log(speedSensor.call(bmw, Speed));
+// console.log(speedSensor.call(audi, Speed));
+
+
+
+// lesson 12.06
+
+// class Car {
+
+// static qty = 0;
+// static increment() {
+//     Car.qty +=1
+// }
+
+//     #price;
+//    constructor(obj) {
+//     this.brand = obj.brand;
+//     this.model = obj.model;
+//     this.#price = obj.price;
+//     Car.increment();
+
+//    }
+
+//    getPrice() {
+//     return this.#price;
+//    }
+//    changePrice(newPrice) {
+//     this.#price = newPrice;
+//    }
+//    get price() {
+//     return this.#price
+//    }
+//    set price(newPrice) {
+//    if(this.#checkType(newPrice, "number")) {
+//     this.#price += newPrice;
+//     return;
+//    }
+//    console.log("OOpps");
+   
+    
+   
+
+//    }
+//    #checkType(data, type) {
+//     if(typeof data !== type) {
+//         return false;
+//     }
+//     return true;
+//    }
+
+// }
+//  const bmw = new Car({brand:"BMW", model: "X5", price: 70000});
+//  const audi = new Car({brand:"Audi", model: "Q5", price: 50000});
+//   const audi2 = new Car({brand:"Audi", model: "Q5", price: 50000});
+
+// bmw.price = "5000";
+// console.log(bmw.price);
+
+
+
+
+ 
+// console.log(Car.qty);
+// console.log(audi);
+
+
+
+
+// ****** наслідування класів
+
+
+// class Hero {
+//     constructor(obj) {
+//         this.name = obj.name;
+//         this.xp = obj.xp;
+//     }
+//     gainXp(amount) {
+//         console.log(`${this.name} received ${amount} xp`);
+//         this.xp += amount;
+        
+//     }
+// }
+
+
+// class Warrior extends Hero {
+
+//     constructor(obj) {
+//         super({
+//             name: obj.name,
+//             xp: obj.xp
+//         })
+//         this.weapon = obj.weapon;
+//     }
+
+//     attack() {
+//         console.log(`${this.name} attacks with ${this.weapon}`);
+        
+//     }
+// }
+
+
+// class Mage extends Hero {
+//     constructor(obj) {
+//         super({
+//             name: obj.name,
+//             xp: obj.xp,
+//         })
+//         this.spells = obj.spells;
+
+//     }
+//     cast() {
+//         console.log(`${this.name} is casteing a spell`);
+        
+//     }
+// }
+// const arthas = new Warrior({name: "Arthas", xp: 1000, weapon: "swor"});
+
+// const chadgar = new Mage({name: "Khadgar", xp: 500, spells: ["fireball"]});
+// chadgar.gainXp(200);
+// chadgar.cast()
+
+// console.log(
+//     chadgar
+// );
+
+
+
+
+// ***** task 1 
+
+// class Blogger {
+//     constructor(obj) {
+//       this.email = obj.email;
+//       this.age = obj.age;
+//       this.numberOfPosts = obj.numberOfPosts;
+//       this.topics = obj.topics;
+//     }
+//     getInfo() {
+//         return `User ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts`
+//     }
+//     updatePostCount(value) {
+//         this.numberOfPosts += value;
+//     }
+// }
+
+// const alice = new Blogger({
+//     email: "alice@gmail.com",
+// age: 25,
+// numberOfPosts: 20,
+// topics: ["sport", "gaming"]
+// });
+// alice.updatePostCount(10);
+
+// console.log(alice.getInfo());
+ 
+// console.log(alice);
+
+// const petya = new Blogger({
+// email: "pet@gmail.com",
+// age: 15,
+// numberOfPosts: 150,
+// topics: ["sp", "gami"]
+// })
+
+
+// console.log(petya.getInfo());
+
+// console.log(petya);
+
+
+
+
+
+
+
+
+
+
+
+// ****** task2 
+
+
+// class User {
+//     #login;
+//     #email;
+
+//     constructor(myLogin, myEmail) {
+//         this.#login = myLogin;
+//         this.#email = myEmail;
+//     }
+//     get login() {
+//         return this.#login;
+//     }
+//     set login(newLogin) {
+//         this.#login = newLogin
+//     }
+//     get email() {
+//         return this.#email;
+//     }
+//     set email(newEmail) {
+//         this.#email = newEmail;
+//     }
+// }
+
+// const alice = new User("Alice", "alice@gmail.com")
+// alice.email = "jrnklsd";
+// console.log(alice.email);
+// alice.login = "ekrlcwefj112134"
+// console.log(alice.login);
+
+// console.log(alice);
+
+
