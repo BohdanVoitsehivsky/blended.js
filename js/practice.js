@@ -2145,3 +2145,178 @@
 // console.log(alice);
 
 
+
+
+// lesson 18.06
+
+
+// DOM представлення торінки у вигляді об*єкта
+
+// методи для отримання доступу до елемента
+
+// const magicBtn = document.querySelector("#magic-btn");
+// // доступ за id
+
+// const navEl = document.querySelector(".site-nav");
+// //  доступ за назвою класу
+
+// const navList = document.querySelector("ul")
+// // за назвою тега( рідшк використовується)
+
+
+
+// const navLinksEl = document.querySelectorAll(".site-nav_link");
+
+
+
+
+
+//  
+
+// const navEl = document.querySelector(".site-nav");
+// console.log(navEl.firstElementChild);
+// console.log(navEl.lastElementChild);
+// console.log(navEl.children);
+
+
+// const portfolioEl = navEl.children[1];
+// console.log(portfolioEl.nextElementSibling);
+// console.log(portfolioEl.previousElementSibling);
+// console.log(portfolioEl.parentNode);
+
+
+
+// *************
+
+
+// const imgEl = document.querySelector(".hero_image");
+// console.log(imgEl.src);
+// imgEl.src = "нове посилання"
+
+// imgEl.alt = "new cat";
+
+
+// const heroTitle = document.querySelector(".hero_title")
+// console.log(heroTitle.textContent);
+
+// heroTitle.textContent = "New text";
+
+
+// ********** Атрибути 
+// - get(імя атрибута)
+// -set(name atributes)
+// - removeEventListener(nameAtributes)
+// -has(nameAtributes)
+
+
+
+// console.log(imgEl.getAttribute("src"));
+
+
+// imgEl.setAttribute("width", 480)
+
+// imgEl.removeAttribute("width");
+
+
+// console.log(imgEl.hasAttribute("href"));
+
+
+
+
+// *****data-атрибути
+
+
+// const actions = document.querySelectorAll(".actions button")
+// actions[1].dataset.action = "lalala";
+// actions[1].dataset.color = "red"
+// console.log(actions[1].dataset.action );
+// delete actions[1].dataset.color;
+
+
+// **** є список, працюємо з ним
+
+
+// const currentPageUrl = '/contact';
+// const linrEl = document.querySelector('.site-nav_link[href="/contact"]');
+// linkEl.classList.add("site-nav_link--current");
+
+// linkEl.classList.toggle("site-nav__link");
+
+// linkEl.classList.replace("old-class", "new-class")
+
+
+// ****** 1.36 відео Створення і додавання елементів
+
+
+// const titleEl = document.createElement("h1");
+// titleEl.textContent = "My title";
+// titleEl.classList.add("page-title");
+
+
+// document.body.append(titleEl)
+
+// const imgEL = document.createElement("img");
+// imgEL.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSITbHeGlyfhs8BPis4DZSXLelpXLHRIBE31g&s";
+// imgEL.alt = "Audi";
+// console.log(imgEL);
+// document.body.append(imgEL, titleEl)
+
+
+// const navItemEl = document.createElement("li");
+// navItemEl.classList.add("site-nav_item");
+// const navLinkEl = document.createElement("a");
+// navLinkEl.href = "/profile";
+// navLinkEl.classList.add("site-nav_link");
+// navLinkEl.textContent = "lalala";
+// navItemEl.append(navLinkEl);
+// console.log(navItemEl);
+
+
+// const siteNav = document.querySelector(".site-nav");
+// siteNav.append(navItemEl)
+
+
+
+// const options = [
+//     {label: 'червоний', color: '#F44336'},
+//     {label: 'зелений', color: '#4CAF50'},
+// ];
+// const colorPickerContainerEl = document.querySelector('.color-picker__option')
+
+// const elements = options.map((option) => {
+//     const btn = document.createElement("button");
+//     btn.classList.add("color-picker__option");
+//     btn.textContent = option.label;
+//     btn.style.backgroundColor = option.color;
+//     return btn
+// });
+// console.log(elements);
+
+// colorPickerContainerEl.append(...elements);
+
+
+
+// // Пишемо функцію для створення розмітки колорпікера
+
+// const createMarkup = (arr) => {
+//     return arr.map((option) => {
+//     const btn = document.createElement("button");
+//     btn.classList.add("color-picker__option");
+//     btn.textContent = option.label;
+//     btn.style.backgroundColor = option.color;
+//     return btn
+// });
+// }
+
+// colorPickerContainerEl.append(...createMarkup(arr))
+
+
+
+
+// ******** Властивість innerHTML
+
+
+// const titleEl = document.querySelector(".title");
+// // console.log(titleEl.innerHTML);
+// titleEl.innerHTML = '<a href="">Title </a>'
+
