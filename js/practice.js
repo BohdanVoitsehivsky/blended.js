@@ -2320,3 +2320,10 @@
 // // console.log(titleEl.innerHTML);
 // titleEl.innerHTML = '<a href="">Title </a>'
 
+
+
+
+// ***** Урок за 24 червня
+
+// ***** спливання подій
+

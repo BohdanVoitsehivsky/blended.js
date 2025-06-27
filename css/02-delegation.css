@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Відстань між квадратами */
+  margin-top: 50px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+/* Індивідуальні кольори для кожного блока */
+.box.red {
+  background-color: red;
+}
+
+.box.black {
+  background-color: black;
+}
+
+.box.green {
+  background-color: green;
+}

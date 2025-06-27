@@ -1,0 +1,21 @@
+#parent {
+  background-color: #7b4fa3; /* фіолетовий */
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#child {
+  background-color: #42a5f5; /* блакитний */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#inner-child {
+  background-color: #00897b; /* зелено-бірюзовий */
+  color: white;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
