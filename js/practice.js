@@ -2327,3 +2327,212 @@
 
 // ***** спливання подій
 
+
+
+
+
+// ***** деструктуризація
+
+
+// const user = {
+//     userName: "Alice",
+//     age: 30,
+//     city: 100
+// }
+// const city = "Poltava";
+// const {userName, ...rest} = user;
+
+// console.log(rest);
+
+
+
+//  глибока деструктуризація
+
+// const user = {
+//     userName: "Alice",
+//     skills: {
+//         html: true,
+//         css: true,
+//         js: false
+//     }
+// }
+
+// const {skills: {html, css, js}} = user;
+// console.log(css);
+
+
+
+//  деструктуризація масивів
+
+
+// const arr = [1, 2, 3, 5];
+
+// const [first, , , , , , , second = "okokok"] = arr;
+// console.log(first);
+// console.log(second);
+
+
+
+
+
+//  деструктуризацыя в параметрах функції
+
+// const user = {
+//     name: "Petya",
+//     skills: {
+//         html: true,
+//         css: true,
+//         js: true
+//     }
+// }
+
+// без деструктуризації
+
+// function getUserInfo(obj) {
+// console.log(`${obj.name} ${obj.skills.html} ${obj.skills.css} ${obj.skills.js}`);
+
+// }
+// getUserInfo(user);
+
+//  з деструктуризацією
+
+// function getUserInfo({name, skills: {html, css, js}}) {
+// console.log(`${name} ${html} ${css} ${js}`);
+// }
+// getUserInfo(user);
+
+
+
+
+// function foo({username}) {
+//     console.log(username);
+    
+// }
+// foo()
+
+// function foo({username} = {}) {
+//     console.log(username);
+    
+// }
+// foo();
+
+
+//  деструктуризація об*єкта в циклі
+
+// const users = [{name: "Kate"}, {name: "Alice"}, {name: "Petya"}];
+
+// *** без деструктеризіції
+
+// const names = [];
+// for(const user of users) {
+ 
+//     names.push(user.name)
+// }
+// console.log(names);
+
+
+// **** з деструктеризацією
+
+
+// const names = [];
+// for(const user of users) {
+//     const {name} = user;
+//     names.push(name)
+// }
+// console.log(names);
+
+
+// const names = [];
+// for(const {name} of users) {
+//     names.push(name)
+
+// }
+// console.log(names);
+
+
+
+// const names = users.map(({name}) => name);
+// console.log(names);
+
+
+
+// **** task * Деструктуризуй об'єкт таким чином щоб отримати значення name, surname, username
+ 
+// const user = {
+//     id: 1,
+//     username: "Harry_potter",
+//     profile:
+//      {
+//         name: "Harry",
+//         surname: "Potter",
+//         age: 25,
+//     },
+// };
+// const {username, profile: {name, surname}} = user;
+
+
+// console.log(`ім*я ${name}`);
+// console.log(`прізвище ${surname}`);
+// console.log(`нік ${username}`);
+
+
+
+
+// ***  /**
+//  * Допиши функцію таким чином щоб кожна властивість
+//  * об'єкта product була незалежним параметром
+//  */
+
+// const product = {
+//   name: "Smart TV",
+//   price: 25000,
+//   category: "Electronics",
+//   details: {
+//     brand: "Samsung",
+//     color: "Black",
+//     weight: "15.5",
+//   },
+// };
+
+// function getProductInfo({ 
+//     name, price, category,
+//     details: { brand, color, weight }
+//  }) {
+//     console.log(`Назва товару: ${name}`);
+//     console.log(`Ціна: ${price} грн`);
+//     console.log(`Категорія: ${category}`);
+//     console.log("Деталі:");
+//     console.log(`- Бренд: ${brand}`);
+//     console.log(`- Колір: ${color}`);
+//     console.log(`- Вага: ${weight} кг`); 
+// }
+
+
+
+// getProductInfo(product);
+
+
+
+//   **** /**
+//  * Необхідно зрoбити рефакторинг функції calculateHousePerimeter,
+//  * так щоб вона приймала об'єкт з параметрами будинку,
+//  * включаючи довжини сторін будинку.
+//  * Функція повинна розрахувати та повернути периметр будинку.
+//  */
+
+// function calculateHousePerimeter({ sideC, sideD, sideB, sideA }) {
+//     const perimeter = sideA + sideB + sideC + sideD;
+//     return perimeter;
+//   }
+
+
+//   const house = {
+//     sideA: 10,
+//     sideB: 15,
+//     sideC: 10,
+//     sideD: 15
+// }
+
+
+// const perimeter = calculateHousePerimeter(house);
+// console.log(`Периметр будинку: ${perimeter}`);
