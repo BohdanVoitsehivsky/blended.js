@@ -28,6 +28,8 @@ function createMarkup(arr) {
     ).join("");
 
 }
+
+// kkkfkfkf
 // const totalPrice = document.querySelector(".js-total-price");
 // const clear = document.querySelector(".js-clear");
 // const container = document.querySelector(".js-list");
